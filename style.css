@@ -1,0 +1,9 @@
+#mainDiv{
+    border: 20px solid brown;
+    overflow: auto;
+    height: 600px;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+}

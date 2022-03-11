@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unlimited Scroll</title>
+</head>
+<style>
+    #mainDiv{
+    border: 20px solid brown;
+    overflow: auto;
+    height: 600px;
+    width: 500px;
+    text-align: center;
+    margin: auto;
+    border-radius: 5px;
+}
+</style>
+
+
+<body>
+    <div id="mainDiv">
+
+    </div>
+</body>
+
+</html>
+<script>
+    let counter = 1;
+
+    const disData = (num = counter + 25) => {
+        while (counter < num) {
+            let h1 = document.createElement("h1");
+            h1.innerHTML = `Masai Student ${counter}`;
+            counter++;
+            document.getElementById("mainDiv").append(h1)
+        }
+
+    }
+
+    const debouncing = (func, delay) => {
+        return function () {
+            setTimeout(() => {
+                func();
+            }, delay)
+        }
+    }
+
+    let myFunc = debouncing(disData, 1000);
+
+    myFunc();
+
+    let container = document.getElementById("mainDiv")
+    container.addEventListener("scroll", () => {
+        if (container.offsetHeight + container.scrollTop >= container.scrollHeight) {
+            myFunc();
+        }
+    })
+
+
+
+</script>
